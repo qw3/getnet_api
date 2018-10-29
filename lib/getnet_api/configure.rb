@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 module GetnetApi
-  module Configuracao
+  module Configure
 
     # Endereço do wsdl funções:
     # [Criar Transação pagamentoTransacaoCompleta, Capturar operacaoTransacao, Cancelar operacaoTransacao, Consultar consultaTransacaoEspecifica]
@@ -38,6 +38,10 @@ module GetnetApi
     # Enviado pela Getnet
     attr_writer :client_secret
 
+    # Token de acesso utilizado nas demais requisições
+    attr_writer :access_token
+    attr_writer :expires_in
+
     # Comando que recebe as configuracoes
     def configure
       yield self if block_given?
@@ -68,19 +72,33 @@ module GetnetApi
       @client_secret ||= CLIENT_SECRET
     end
 
-    # Retornar a url conforme o ambiente
+    # Definir endpoint
     def endpoint
+      @endpoint ||= set_endpoint
+    end
+
+    # Definir access_token
+    def access_token
+      @access_token ||= ""
+    end
+    # Definir Versão da API da Getnet
+    def expires_in
+      @expires_in ||= DateTime.now - 1.day
+    end
+
+    # Retornar a url conforme o ambiente
+    def set_endpoint
       if ambiente == :producao
-        GetnetApi::Configuracao::URL[:producao]
+        return GetnetApi::Configure::URL[:producao]
       elsif ambiente == :homologacao
-        GetnetApi::Configuracao::URL[:homologacao]
+        return GetnetApi::Configure::URL[:homologacao]
       else
-        GetnetApi::Configuracao::URL[:sandbox]
+        return GetnetApi::Configure::URL[:sandbox]
       end
     end
 
-    def self.base_uri
-      "#{endpoint}/#{@api_version}/"
+    def base_uri
+      return "#{self.endpoint}/#{self.api_version}/"
     end
 
   end
