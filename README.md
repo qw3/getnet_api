@@ -92,6 +92,7 @@ endereco = GetnetApi::Endereco.new ({
 
 - [QW3 Software & Marketing](http://qw3.com.br)
 - [Leandro dos Santos Falcão](https://www.linkedin.com/in/lsfalcao)
+- [Victor Barreiros](https://github.com/vickbb)
 
 ## Copyright
 
