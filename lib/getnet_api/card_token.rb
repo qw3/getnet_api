@@ -10,7 +10,7 @@ module GetnetApi
               "card_number" => card_number.to_s
               }
 
-      response = self.build_request self.endpoint, "post", hash.to_json
+      response = self.build_request self.endpoint, "post", hash
 
       return JSON.parse(response.read_body)
     end

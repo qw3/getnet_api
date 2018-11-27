@@ -1,60 +1,60 @@
 # -*- encoding : utf-8 -*-
 module GetnetApi
-  class Endereco
+  class Address
 
     # Endereço (Logradouro)
     # Alfa Numérico - Até 60 caracteres
-    attr_accessor :logradouro
+    attr_accessor :street
 
     # Número do logradouro
     # Alfa Numérico - Até 10 caracteres
-    attr_accessor :numero
+    attr_accessor :number
 
     # Complemento do endereço comprador
     # Alfa Numérico - Até 60 caracteres
-    attr_accessor :complemento
+    attr_accessor :complement
 
     # Bairro do logradouro
     # Alfa Numérico - Até 40 caracteres
-    attr_accessor :bairro
+    attr_accessor :district
 
     # Cidade do logradouro
     # Alfa Numérico - Até 40 caracteres
-    attr_accessor :cidade
+    attr_accessor :city
 
     # Estado do logradouro (UF)
     # Alfa Numérico - Até 20 caracteres
-    attr_accessor :estado
+    attr_accessor :state
 
     # País do logradouro
     # Alfa Numérico - Até 20 caracteres
-    attr_accessor :pais
+    attr_accessor :country
 
     # Código Postal, CEP no Brasil ou ZIP nos Estados Unidos. (sem máscara)
     # Alfa Numérico - Até 10 caracteres
-    attr_accessor :cep
+    attr_accessor :postal_code
 
-    # Definir pais
-    def pais
-      @pais ||= "Brasil"
+    # Definir country
+    def country
+      @country ||= "Brasil"
     end
 
     # Validações do Rails 3
     include ActiveModel::Validations
 
     # Validações
-    validates :logradouro, length: { maximum: 60 }
-    validates :numero, length: { maximum: 10 }
-    validates :complemento, length: { maximum: 60 }
-    validates :bairro, :cidade, length: { maximum: 40 }
-    validates :estado, :pais, length: { maximum: 20 }
-    validates :cep, length: { maximum: 8 }
+    validates :street, length: { maximum: 60 }
+    validates :number, length: { maximum: 10 }
+    validates :complement, length: { maximum: 60 }
+    validates :district, :city, length: { maximum: 40 }
+    validates :state, :country, length: { maximum: 20 }
+    validates :postal_code, length: { maximum: 8 }
 
     # Nova instancia da classe Endereco
     # @param [Hash] campos
     def initialize(campos = {})
       campos.each do |campo, valor|
-        if GetnetApi::Endereco.public_instance_methods.include? "#{campo}=".to_sym
+        if GetnetApi::Address.public_instance_methods.include? "#{campo}=".to_sym
           send "#{campo}=", valor
         end
       end
@@ -62,17 +62,17 @@ module GetnetApi
 
     # Montar o Hash de Endereco no padrão utilizado pela GetnetApi
     def to_request
-      billing_address = {
-        street:       self.logradouro,
-        number:       self.numero,
-        complement:   self.complemento,
-        district:     self.bairro,
-        city:         self.cidade,
-        state:        self.estado,
-        postal_code:  self.cep,
-        country:      self.pais,
+      address = {
+        street:       self.street,
+        number:       self.number,
+        complement:   self.complement,
+        district:     self.district,
+        city:         self.city,
+        state:        self.state,
+        postal_code:  self.postal_code,
+        country:      self.country,
       }
-      return billing_address
+      return address
     end
 
   end

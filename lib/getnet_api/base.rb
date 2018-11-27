@@ -22,7 +22,13 @@ module GetnetApi
       end
       request = GetnetApi::Base.default_headers request
 
-      request.body = body
+      # body.insert(1, "\"seller_id\": \"#{GetnetApi.seller_id}\",")
+      # if endpoint.to_s == ""
+      # payment.merge!({"seller_id": GetnetApi.seller_id.to_s,})
+
+      puts "BODY #{body}"
+
+      request.body = body.to_json
       return http.request(request)
     end
 
@@ -32,7 +38,6 @@ module GetnetApi
       request["seller_id"] = "#{GetnetApi.seller_id}"
       return request
     end
-
 
     def self.get_token_de_bearer
       url = URI("#{GetnetApi.endpoint}/auth/oauth/v2/token")

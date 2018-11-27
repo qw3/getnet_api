@@ -54,45 +54,118 @@ GetnetApi.configure do |config|
 end
 ```
 
-## Pagamento com cartão de crédito
+## Pagamentos
 
-Nesse endpoint serão recebidos dados para pagamento com cartão de crédito.
+Nesse endpoint serão recebidos dados para os pagamentos.
 
-### Montar [Cliente](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Cliente)
+
+### Montar [Endereço](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Address)
 
 ```ruby
-cliente = GetnetApi::Cliente.new ({
-  codigo_cliente:        1,
-  primeiro_nome:         "Leandro",
-  ultimo_nome:           "Falcão",
-  nome_completo:         "Leandro Falcão",
-  tipo_documento:        :pessoa_fisica,
-  documento:             "999.999.999-9",
-  email:                 "contato@qw3.com.br",
-  telefone:              "1634166404",
-  endereco:              endereco, # Objeto da classe GetnetApi::Endereco
+obj_endereco = GetnetApi::Address.new ({
+  street:       "Rua Dom Pedro II",
+  number:       "1330",
+  district:     "Vila Monteiro (Gleba I)",
+  complement:   "Sala A",
+  city:         "São Carlos",
+  state:        "SP",
+  postal_code:  "13560320",
 })
 ```
 
-### Montar [Endereço](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Endereco)
+### Montar [Cliente](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Customer)
 
 ```ruby
-endereco = GetnetApi::Endereco.new ({
-  logradouro:    "Rua Dom Pedro II",
-  numero:        "1330",
-  bairro:        "Vila Monteiro (Gleba I)",
-  complemento:   "Sala A",
-  cidade:        "São Carlos",
-  estado:        "SP",
-  cep:           "13560320",
+obj_cliente = GetnetApi::Customer.new ({
+  customer_id:      1,
+  first_name:       "Leandro",
+  last_name:        "Falcão",
+  name:             "Leandro Falcão",
+  document_type:    :pessoa_fisica,
+  documento:        "999.999.999-9",
+  email:            "contato@qw3.com.br",
+  phone_number:     "1634166404",
+  celphone_number:  "16955555555",
+  endereco:         obj_endereco, # Objeto da classe GetnetApi::Endereco
 })
 ```
+
+### Montar [Order](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Order)
+
+```ruby
+obj_pedido = GetnetApi::Order.new ({
+  order_id:      "123456",
+  sales_tax:     12,
+  product_type:  "phisical_goods"
+})
+```
+
+---
+
+### Montar [Payment](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Payment)
+
+```ruby
+obj_pagamento = GetnetApi::Payment.new ({
+  amount:           100,
+  currency:         "BRL",
+  order:            obj_pedido, # Objeto da classe GetnetApi::Order
+  customer:         obj_cliente, # Objeto da classe GetnetApi::Customer
+  billing_address:  obj_endereco, # Objeto da classe GetnetApi::Endereco
+})
+```
+## Criando um pagamento na GetNet do tipo Credit
+
+### Montar [Cartão](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Credit)
+
+```ruby
+obj_credit = GetnetApi::Credit.new ({
+  delayed: false,
+  authenticated: false,
+  pre_authorization: false,
+  save_card_data: false,
+  transaction_type: 'FULL',
+  number_installments: 1,
+  soft_descriptor: '',
+  dynamic_mcc: ''
+})
+```
+
+```ruby
+# No Caso de pagamento com Cartão de Credito
+# GetnetApi::Payment.create(GetnetApi::Payment, GetnetApi::Credit, tipo)
+novo_pagamento = GetnetApi::Payment.create obj_pagamento, obj_credito, :credit
+```
+
+---
+
+## Criando um pagamento na GetNet do tipo Boleto
+
+### Montar [Boleto](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Boleto)
+
+```ruby
+obj_boleto = GetnetApi::Boleto.new ({
+  our_number: "000001946598",
+  document_number: "170500000019763",
+  expiration_date: "16/11/2017",
+  instructions: "Não receber após o vencimento",
+  provider: "santander"
+})
+```
+
+```ruby
+# No Caso de pagamento de Boleto
+# GetnetApi::Payment.create(GetnetApi::Payment, GetnetApi::Boleto, tipo)
+novo_pagamento = GetnetApi::Payment.create obj_pagamento, obj_boleto, :boleto
+```
+
+---
+
 
 ## Autor
 
 - [QW3 Software & Marketing](http://qw3.com.br)
 - [Leandro dos Santos Falcão](https://www.linkedin.com/in/lsfalcao)
-- [Victor Barreiros](https://github.com/vickbb)
+- [Victor Barreiros](www.linkedin.com/in/victor-barreiros)
 
 ## Copyright
 
