@@ -2,11 +2,29 @@
 module GetnetApi
   class Card
 
+    # string 128 characters Required
+    # Número do cartão tokenizado. Gerado previamente por meio do endpoint /v1/tokens/card.
     attr_accessor :number_token
+
+    # string <= 26 characters Required
+    # Nome do comprador impresso no cartão.
     attr_accessor :cardholder_name
+
+    # string [ 3 .. 4 ] characters
+    # Código de segurança. CVV ou CVC.
     attr_accessor :security_code
+
+    # string <= 50 characters
+    # "Mastercard" "Visa" "Amex" "Elo" "Hipercard"
+    # Bandeira do cartão.
     attr_accessor :brand
+
+    # string 2 characters Required
+    # Mês de expiração do cartão com dois dígitos.
     attr_accessor :expiration_month
+
+    # string 2 characters Required
+    # Ano de expiração do cartão com dois dígitos.
     attr_accessor :expiration_year
 
     # Validações do Rails 3

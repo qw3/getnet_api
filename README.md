@@ -86,11 +86,11 @@ obj_cliente = GetnetApi::Customer.new ({
   email:            "contato@qw3.com.br",
   phone_number:     "1634166404",
   celphone_number:  "16955555555",
-  endereco:         obj_endereco, # Objeto da classe GetnetApi::Endereco
+  endereco:         obj_endereco, # Objeto da classe GetnetApi::Address
 })
 ```
 
-### Montar [Order](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Order)
+### Montar [Pedido](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Order)
 
 ```ruby
 obj_pedido = GetnetApi::Order.new ({
@@ -102,15 +102,14 @@ obj_pedido = GetnetApi::Order.new ({
 
 ---
 
-### Montar [Payment](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Payment)
+### Montar [Pagamento](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Payment)
 
 ```ruby
 obj_pagamento = GetnetApi::Payment.new ({
-  amount:           100,
-  currency:         "BRL",
+  amount:           100,        # Quantidade em centavos
   order:            obj_pedido, # Objeto da classe GetnetApi::Order
   customer:         obj_cliente, # Objeto da classe GetnetApi::Customer
-  billing_address:  obj_endereco, # Objeto da classe GetnetApi::Endereco
+  billing_address:  obj_endereco, # Objeto da classe GetnetApi::Address
 })
 ```
 ## Criando um pagamento na GetNet do tipo Credit

@@ -4,6 +4,7 @@ module GetnetApi
     require 'uri'
     require 'net/http'
 
+    # Metodo para gerar o token do cartão de credito do cliente, para ser usado no pagamento.
     def self.get card_number
 
       hash =  {

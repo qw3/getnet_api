@@ -1,4 +1,0 @@
-adicionar validações para todos os campos de cliente
-
-# Enviar hash para Bese e converter hash.json na Base
-response = self.build_request self.endpoint, "post", hash.to_json

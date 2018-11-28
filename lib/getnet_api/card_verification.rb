@@ -4,6 +4,7 @@ module GetnetApi
     require 'uri'
     require 'net/http'
 
+    # Metodo para verificar se o token gerado é valido.
     def self.verify card_token
 
       hash =  {

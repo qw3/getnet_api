@@ -14,8 +14,10 @@ module GetnetApi
     # Identificação da moeda (Consultar código em "https://www.currency-iso.org/en/home/tables/table-a1.html").
     attr_accessor :currency
 
+    # Objeto do tipo GetnetApi::Order
     attr_accessor :order
-    attr_accessor :boleto
+
+    # Objeto do tipo GetnetApi::Customer
     attr_accessor :customer
 
     # Validações do Rails 3
@@ -52,6 +54,11 @@ module GetnetApi
       else
         record.errors.add(attr, 'deve ser um objeto GetnetApi::Customer.')
       end
+    end
+
+    # Definir moeda usada
+    def currency
+      @currency ||= "BRL"
     end
 
     # Nova instancia da classe Cliente

@@ -2,12 +2,20 @@
 module GetnetApi
   class Credit < Base
 
+    # Boolean Required
+    # Identifica se o crédito será feito com confirmação tardia.
     attr_accessor :delayed
 
+    # Boolean
+    # Indicativo se transação deve ter o processo de autenticação no emissor, caso authenticated = true, o portador deve ser encaminhado ao site do emissor para autenticação junto ao mesmo.
     attr_accessor :authenticated
 
+    # Boolean
+    # Indicativo se a transação é uma pré autorização de crédito.
     attr_accessor :pre_authorization
 
+    # Boolean Required
+    # Identifica se o cartão deve ser salvo para futuras compras.
     attr_accessor :save_card_data
 
     # string Required
@@ -15,10 +23,12 @@ module GetnetApi
     # Tipo de transação. Pagamento completo à vista, parcelado sem juros, parcelado com juros.
     attr_accessor :transaction_type
 
-   # integer Required
-   # Número de parcelas.
+    # integer Required
+    # Número de parcelas.
     attr_accessor :number_installments
 
+    # string <= 22 characters
+    # Texto exibido na fatura do cartão do comprador, Este campo é opcional, não sendo informado nada, será considerado o nome fantasia cadastrado para o estabelecimento.
     attr_accessor :soft_descriptor
 
     # integer
@@ -32,14 +42,10 @@ module GetnetApi
     # Validações do Rails 3
     include ActiveModel::Validations
 
-    # validates :delayed, length: {  } boolean
-    # validates :authenticated, length: {  } boolean
-    # validates :pre_authorization, length: {  } boolean
-    # validates :save_card_data, length: {  } boolean
     validates :transaction_type, length: { maximum: 22 }
     validates :number_installments, presence: true
-    validates :soft_descriptor, length: { maximum: 22 }#, allow: :blank
-    validates :dynamic_mcc, length: { maximum: 10 }#, allow: :blank
+    validates :soft_descriptor, length: { maximum: 22 }
+    validates :dynamic_mcc, length: { maximum: 10 }
 
     validates_each [:card] do |record, attr, value|
       if value.is_a? GetnetApi::Card

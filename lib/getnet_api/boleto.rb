@@ -3,7 +3,9 @@ module GetnetApi
   class Boleto
 
     # string 12 characters
-    # Denominado pelos bancos como "Nosso Número". É a identificação única do boleto no sistema de cobrança. É composto por regras que variam em função do banco e do serviço de cobrança. Por exemplo, no caso do Santander existem duas formas de se numerar. 1) Se cliente quem numera, deve informar o dígito verificador (DV); 2) Se o cliente omitir o número, o Banco fica encarregado da geração de um sequêncial, sem um DV. (sem máscara)
+    # Denominado pelos bancos como "Nosso Número". É a identificação única do boleto no sistema de
+    # cobrança. É composto por regras que variam em função do banco e do serviço de cobrança.
+    # Por exemplo, no caso do Santander existem duas formas de se numerar. 1) Se cliente quem numera, deve informar o dígito verificador (DV); 2) Se o cliente omitir o número, o Banco fica encarregado da geração de um sequêncial, sem um DV. (sem máscara)
     attr_accessor :our_number
 
     # string 15 characters

@@ -22,12 +22,6 @@ module GetnetApi
       end
       request = GetnetApi::Base.default_headers request
 
-      # body.insert(1, "\"seller_id\": \"#{GetnetApi.seller_id}\",")
-      # if endpoint.to_s == ""
-      # payment.merge!({"seller_id": GetnetApi.seller_id.to_s,})
-
-      puts "BODY #{body}"
-
       request.body = body.to_json
       return http.request(request)
     end
