@@ -59,7 +59,7 @@ end
 Nesse endpoint serão recebidos dados para os pagamentos.
 
 
-### Montar [Endereço](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Address)
+### Montar [Endereço](https://www.rubydoc.info/gems/getnet_api/GetnetApi/Address)
 
 ```ruby
 obj_endereco = GetnetApi::Address.new ({
@@ -73,7 +73,7 @@ obj_endereco = GetnetApi::Address.new ({
 })
 ```
 
-### Montar [Cliente](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Customer)
+### Montar [Cliente](https://www.rubydoc.info/gems/getnet_api/GetnetApi/Customer)
 
 ```ruby
 obj_cliente = GetnetApi::Customer.new ({
@@ -90,7 +90,7 @@ obj_cliente = GetnetApi::Customer.new ({
 })
 ```
 
-### Montar [Pedido](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Order)
+### Montar [Pedido](https://www.rubydoc.info/gems/getnet_api/GetnetApi/Order)
 
 ```ruby
 obj_pedido = GetnetApi::Order.new ({
@@ -102,7 +102,7 @@ obj_pedido = GetnetApi::Order.new ({
 
 ---
 
-### Montar [Pagamento](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Payment)
+### Montar [Pagamento](https://www.rubydoc.info/gems/getnet_api/GetnetApi/Payment)
 
 ```ruby
 obj_pagamento = GetnetApi::Payment.new ({
@@ -114,7 +114,7 @@ obj_pagamento = GetnetApi::Payment.new ({
 ```
 ## Criando um pagamento na GetNet do tipo Credit
 
-### Montar [Cartão](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Credit)
+### Montar [Cartão](https://www.rubydoc.info/gems/getnet_api/GetnetApi/Credit)
 
 ```ruby
 obj_credit = GetnetApi::Credit.new ({
@@ -139,7 +139,7 @@ novo_pagamento = GetnetApi::Payment.create obj_pagamento, obj_credito, :credit
 
 ## Criando um pagamento na GetNet do tipo Boleto
 
-### Montar [Boleto](http://www.rubydoc.info/github/qw3/superpay_api/GetnetApi/Boleto)
+### Montar [Boleto](https://www.rubydoc.info/gems/getnet_api/GetnetApi/Boleto)
 
 ```ruby
 obj_boleto = GetnetApi::Boleto.new ({

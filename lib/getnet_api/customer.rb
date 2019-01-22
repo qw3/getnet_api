@@ -106,10 +106,10 @@ module GetnetApi
       }
 
       if tipo == :customer
-          customer.merge!({"address": address.to_request,})
+          customer.merge!({"address" => address.to_request,})
       elsif tipo == :payment
-          customer.merge!({"name": self.name.to_s,})
-          customer.merge!({"billing_address": address.to_request,})
+          customer.merge!({"name" => self.name.to_s,})
+          customer.merge!({"billing_address" => address.to_request,})
       end
 
       return customer

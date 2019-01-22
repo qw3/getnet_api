@@ -27,6 +27,10 @@ module GetnetApi
     # Ano de expiração do cartão com dois dígitos.
     attr_accessor :expiration_year
 
+    def brand
+      @brand ||= ""
+    end
+
     # Validações do Rails 3
     include ActiveModel::Validations
 
