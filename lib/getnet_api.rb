@@ -14,6 +14,7 @@ require "getnet_api/order"
 require "getnet_api/boleto"
 require "getnet_api/credit"
 require "getnet_api/payment"
+require "getnet_api/payment_cancel"
 
 
 # -*- encoding : utf-8 -*-
