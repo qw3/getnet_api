@@ -10,15 +10,10 @@ module GetnetApi
     # Valor do pagamento em centavos
     attr_accessor :cancel_amount
 
-    # cancel_custom_key
-    # string <= 32 characters
-    # Chave do cliente utilizada para identificar uma solicitação de cancelamento.
-    attr_accessor :cancel_custom_key
-
     # Validações do Rails 3
     include ActiveModel::Validations
 
-    validates :amount, length: { maximum: 3 }
+    validates :cancel_amount, length: { maximum: 10 }
 
     def initialize campos={}
       campos.each do |campo, valor|
@@ -33,7 +28,6 @@ module GetnetApi
       pay_cancel = {
         payment_id: self.payment_id,
         cancel_amount: self.cancel_amount,
-        cancel_custom_key: self.cancel_custom_key
       }
     end
 
@@ -41,14 +35,14 @@ module GetnetApi
     def self.create payment_cancel
       hash = payment_cancel.to_request
 
-      response = self.build_request self.endpoint, "post", hash
+      response = self.build_request self.endpoint(hash[:payment_id]), "post", hash
 
       return JSON.parse(response.read_body)
     end
 
     private
-      def self.endpoint
-        "cancel/request"
+      def self.endpoint payment_id
+        "payments/credit/#{payment_id}/cancel"
       end
   end
 end

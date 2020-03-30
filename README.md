@@ -157,6 +157,19 @@ obj_boleto = GetnetApi::Boleto.new ({
 novo_pagamento = GetnetApi::Payment.create obj_pagamento, obj_boleto, :boleto
 ```
 
+## Criando um cancelamento de cartão de crédito
+
+### Montar [Cancelamento](https://www.rubydoc.info/gems/getnet_api/GetnetApi/PaymentCancel)
+```ruby
+obj_cancelamento = GetnetApi::PaymentCancel.new ({
+  payment_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  cancel_amount: 1000
+})
+
+# GetnetApi::PaymentCancel.create(GetnetApi::PaymentCancel)
+cancelamento = GetnetApi::PaymentCancel.create obj_cancelamento
+```
+
 ---
 
 
@@ -165,6 +178,7 @@ novo_pagamento = GetnetApi::Payment.create obj_pagamento, obj_boleto, :boleto
 - [QW3 Software & Marketing](http://qw3.com.br)
 - [Leandro dos Santos Falcão](https://www.linkedin.com/in/lsfalcao)
 - [Victor Barreiros](www.linkedin.com/in/victor-barreiros)
+- [Daniel B. Brumazzi](https://www.linkedin.com/in/daniel-brumazzi-2153707b/)
 
 ## Copyright
 
