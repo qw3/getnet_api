@@ -10,6 +10,7 @@ describe GetnetApi::Configure do
         config.client_secret = 'client_secret'
       end
     end
+
     it 'sets attributes to GetnetApi' do
       expect(GetnetApi.seller_id).to eq 'seller_id'
       expect(GetnetApi.client_id).to eq 'client_id'
