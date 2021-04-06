@@ -127,6 +127,7 @@ describe GetnetApi::Configure do
 
   describe '#endpoint' do
     it 'sets and returns endpoint based on ambiente' do
+      GetnetApi.instance_variable_set :@endpoint, nil
       ambiente = GetnetApi.ambiente
       expected_endpoint = GetnetApi::Configure::URL[ambiente]
       expect(GetnetApi.endpoint).to eq expected_endpoint
