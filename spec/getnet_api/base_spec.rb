@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe GetnetApi::Base do
-  describe '#self.build_request' do
+  describe '.build_request' do
     it 'builds and executes request based on' do
       VCR.use_cassette 'getnet_api/base/build_request' do
         GetnetApi.ambiente = :sandbox
@@ -13,7 +13,7 @@ describe GetnetApi::Base do
     end
   end
 
-  describe '#self.default_headers' do
+  describe '.default_headers' do
     let(:dummy_url) { 'someurl.com' }
     let(:dummy_request) { Net::HTTP::Get.new(dummy_url) }
     it 'creates headers for request' do
@@ -49,7 +49,7 @@ describe GetnetApi::Base do
     end
   end
 
-  describe '#self.get_token_de_bearer' do
+  describe '.get_token_de_bearer' do
     context 'when token is expired' do
       it 'creates requests for new access token' do
         VCR.use_cassette 'getnet_api/base/valid_bearer' do
