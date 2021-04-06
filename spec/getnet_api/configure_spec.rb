@@ -105,6 +105,26 @@ describe GetnetApi::Configure do
     end
   end
 
+  describe '#expires_in' do
+    it 'sets and returns default value' do
+      GetnetApi.expires_in = nil
+      expected_date = DateTime.now - 1.day
+      expect(GetnetApi.expires_in.to_date).to eq expected_date.to_date
+      instance_expires_in = GetnetApi.instance_variable_get(:@expires_in)
+      expect(instance_expires_in.to_date).to eq expected_date.to_date
+    end
+  end
+
+  describe '#expires_in=' do
+    it 'correctly sets value' do
+      expected_date = DateTime.now + 1.day
+      GetnetApi.expires_in = expected_date
+      expect(GetnetApi.expires_in).to eq expected_date
+      instance_expires_in = GetnetApi.instance_variable_get(:@expires_in)
+      expect(instance_expires_in).to eq expected_date
+    end
+  end
+
   describe '#endpoint' do
     it 'sets and returns endpoint based on ambiente' do
       ambiente = GetnetApi.ambiente
@@ -152,7 +172,7 @@ describe GetnetApi::Configure do
 
   describe 'base_uri' do
     it 'returnes uri based on endpoint and api version' do
-      expected_endpoint = "#{GetnetApi.endpoint}/#{GetnetApi.api_version}/"
+      expected_endpoint = "#{GetnetApi.endpoint}/#{GetnetApi.api_version}"
       expect(GetnetApi.base_uri).to eq expected_endpoint
     end
   end
