@@ -27,7 +27,7 @@ describe GetnetApi::Base do
     end
   end
 
-  describe '#self.valid_bearer' do
+  describe '.valid_bearer' do
     context 'when token is expired' do
       it 'requests for new access token' do
         VCR.use_cassette 'getnet_api/base/valid_bearer' do
@@ -57,7 +57,7 @@ describe GetnetApi::Base do
           GetnetApi::Base.get_token_de_bearer
           expect(GetnetApi::Base.valid_bearer).to be_present
           expect(GetnetApi.expires_in).to be_present
-          expect(GetnetApi.expires_in > DateTime.current).to be true
+          expect(GetnetApi.expires_in).to be > DateTime.current
         end
       end
     end
