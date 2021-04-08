@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe GetnetApi::Card do
   let(:card) do
     GetnetApi::Card.new(
