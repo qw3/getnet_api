@@ -1,0 +1,165 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/auth/oauth/v2/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=oob
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Basic NzQ0Mzg4NzctZjAwYi00NTAyLTg0NTQtZGUzZDcxNjZkYzJhOjRlYWM2OTIwLTFiNTctNGNkMS04Nzk5LWQ4NzcxNzNiZmEzNw==
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=UTF-8
+      X-Edgeconnect-Midmile-Rtt:
+      - '7'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '65'
+      X-Powered-By:
+      - '53247'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 09 Apr 2021 16:21:58 GMT
+      Content-Length:
+      - '127'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"access_token\":\"8fff0aa2-c06e-4ed9-896d-77e2beb94e25\",\r\n
+        \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":3600,\r\n  \"scope\":\"oob\"\r\n}"
+  recorded_at: Fri, 09 Apr 2021 16:21:58 GMT
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/v1/tokens/card
+    body:
+      encoding: UTF-8
+      string: '{"card_number":"5155901222280001"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Bearer 8fff0aa2-c06e-4ed9-896d-77e2beb94e25
+      Content-Type:
+      - application/json
+      Seller-Id:
+      - 67be6e90-00c1-410d-83f5-6d75621effc8
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '129'
+      X-Edgeconnect-Midmile-Rtt:
+      - '8'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '92'
+      X-Powered-By:
+      - '53248'
+      Date:
+      - Fri, 09 Apr 2021 16:21:58 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"number_token":"7b56b5c1d7d7816926b72649a80cd9f710dabf29dd145dd82610e1d7d3b694badbfe7b6fea0ad7214f296259324d4eb898e80dbbd5671fd8d4c0e1a2bd390893"}'
+  recorded_at: Fri, 09 Apr 2021 16:21:58 GMT
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/v1/cards/verification
+    body:
+      encoding: UTF-8
+      string: '{"number_token":"7b56b5c1d7d7816926b72649a80cd9f710dabf29dd145dd82610e1d7d3b694badbfe7b6fea0ad7214f296259324d4eb898e80dbbd5671fd8d4c0e1a2bd390893","cardholder_name":"JOAO
+        DA SILVA","expiration_month":"12","expiration_year":"20","security_code":"123"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Bearer 8fff0aa2-c06e-4ed9-896d-77e2beb94e25
+      Content-Type:
+      - application/json
+      Seller-Id:
+      - 67be6e90-00c1-410d-83f5-6d75621effc8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=utf-8
+      X-Edgeconnect-Midmile-Rtt:
+      - '7'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '411'
+      X-Powered-By:
+      - '53255'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 09 Apr 2021 16:21:59 GMT
+      Content-Length:
+      - '120'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"status":"VERIFIED","verification_id":"f8f1c59d-b703-4f77-a000-92fc188df53f","authorization_code":"350654079740422100"}'
+  recorded_at: Fri, 09 Apr 2021 16:21:59 GMT
+recorded_with: VCR 6.0.0
