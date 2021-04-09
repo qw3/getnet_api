@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 require 'rubygems'
 require 'active_model'
+require 'active_support/time'
+require 'json'
 
 require "getnet_api/version"
 require "getnet_api/configure"

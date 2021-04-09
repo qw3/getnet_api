@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/auth/oauth/v2/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=oob
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Basic NzQ0Mzg4NzctZjAwYi00NTAyLTg0NTQtZGUzZDcxNjZkYzJhOjRlYWM2OTIwLTFiNTctNGNkMS04Nzk5LWQ4NzcxNzNiZmEzNw==
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=UTF-8
+      X-Edgeconnect-Midmile-Rtt:
+      - '8'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '29'
+      X-Powered-By:
+      - '63123'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 06 Apr 2021 16:45:43 GMT
+      Content-Length:
+      - '127'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"access_token\":\"3e28e48b-478f-4b98-b2ca-c2e82e4d5d14\",\r\n
+        \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":3600,\r\n  \"scope\":\"oob\"\r\n}"
+  recorded_at: Tue, 06 Apr 2021 16:45:43 GMT
+recorded_with: VCR 6.0.0
