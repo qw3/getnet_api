@@ -31,7 +31,7 @@ describe GetnetApi::Credit do
   end
 
   it 'is not valid with transaction type length > 22' do
-    credit.number_token = 'A' * 23
+    credit.transaction_type = 'A' * 23
     expect(credit).not_to be_valid
     expect(credit.errors.messages[:transaction_type]).to be_present
   end
@@ -49,7 +49,7 @@ describe GetnetApi::Credit do
   end
 
   it 'is not valid with dynamic mcc length > 10' do
-    credit.security_code = 'A' * 11
+    credit.dynamic_mcc = 'A' * 11
     expect(credit).not_to be_valid
     expect(credit.errors.messages[:dynamic_mcc]).to be_present
   end
@@ -57,9 +57,12 @@ describe GetnetApi::Credit do
   context '#to_request' do
     it 'returns credit object as a hash' do
       credit_hash = credit.to_request
-      credit_hash.keys.each do |key|
+      hash_keys = credit_hash.keys.reject { |k| k == :card }
+      hash_keys.each do |key|
         expect(credit_hash[key]).to eq credit.send(key)
       end
+
+      expect(credit_hash[:card]).to eq credit.card.to_request
     end
   end
 end
