@@ -50,5 +50,6 @@ build-iPhoneSimulator/
 .rvmrc
 
 coverage
+.idea
 
 to_do
