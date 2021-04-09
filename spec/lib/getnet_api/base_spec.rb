@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
 describe GetnetApi::Base do
-  describe '.build_request' do
+  describe '.build_request', :vcr do
     it 'builds and executes request based on' do
-      VCR.use_cassette 'getnet_api/base/build_request' do
-        GetnetApi.ambiente = :sandbox
-        response = GetnetApi::Base.build_request 'some_endpoint', 'get'
-        expect(response).to be_a Net::HTTPNotFound
-        expected_uri = 'https://api-sandbox.getnet.com.br/v1/some_endpoint'
-        expect(WebMock).to have_requested(:get, expected_uri)
-      end
+      GetnetApi.ambiente = :sandbox
+      response = GetnetApi::Base.build_request 'some_endpoint', 'get'
+      expect(response).to be_a Net::HTTPNotFound
+      expected_uri = 'https://api-sandbox.getnet.com.br/v1/some_endpoint'
+      expect(WebMock).to have_requested(:get, expected_uri)
     end
   end
 

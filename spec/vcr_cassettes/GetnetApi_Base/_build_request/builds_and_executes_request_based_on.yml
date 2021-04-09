@@ -39,22 +39,22 @@ http_interactions:
       X-Edgeconnect-Midmile-Rtt:
       - '9'
       X-Edgeconnect-Origin-Mex-Latency:
-      - '28'
+      - '74'
       X-Powered-By:
-      - '49660'
+      - '56403'
       Vary:
       - Accept-Encoding
       Date:
-      - Tue, 06 Apr 2021 17:04:11 GMT
+      - Fri, 09 Apr 2021 14:47:29 GMT
       Content-Length:
       - '127'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: "{\r\n  \"access_token\":\"38e87c4a-4047-4791-9745-91313acf4a1a\",\r\n
+      string: "{\r\n  \"access_token\":\"917f82f0-a0ee-4668-90f7-f70025eb2ca2\",\r\n
         \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":3600,\r\n  \"scope\":\"oob\"\r\n}"
-  recorded_at: Tue, 06 Apr 2021 17:04:11 GMT
+  recorded_at: Fri, 09 Apr 2021 14:47:29 GMT
 - request:
     method: get
     uri: https://api-sandbox.getnet.com.br/v1/some_endpoint
@@ -71,7 +71,7 @@ http_interactions:
       Host:
       - api-sandbox.getnet.com.br
       Authorization:
-      - Bearer 38e87c4a-4047-4791-9745-91313acf4a1a
+      - Bearer 917f82f0-a0ee-4668-90f7-f70025eb2ca2
       Content-Type:
       - application/json
       Seller-Id:
@@ -92,15 +92,15 @@ http_interactions:
       Content-Type:
       - application/json;charset=utf-8
       X-Edgeconnect-Midmile-Rtt:
-      - '8'
+      - '9'
       X-Edgeconnect-Origin-Mex-Latency:
-      - '76'
+      - '84'
       X-Powered-By:
-      - '49661'
+      - '56404'
       Vary:
       - Accept-Encoding
       Date:
-      - Tue, 06 Apr 2021 17:04:11 GMT
+      - Fri, 09 Apr 2021 14:47:29 GMT
       Content-Length:
       - '196'
       Connection:
@@ -109,5 +109,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"message":"Not Found","name":"GatewayClientError","status_code":404,"details":[{"status":"DENIED","error_code":"GENERIC-404","description":"Not
         Found","description_detail":"Resource not found"}]}'
-  recorded_at: Tue, 06 Apr 2021 17:04:11 GMT
+  recorded_at: Fri, 09 Apr 2021 14:47:29 GMT
 recorded_with: VCR 6.0.0
