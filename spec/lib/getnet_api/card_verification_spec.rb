@@ -17,7 +17,8 @@ describe GetnetApi::CardVerification do
         expiration_year: '20'
       )
     end
-    it 'performs the request and returns the number_token' do
+
+    it 'performs the request and returns the verification result' do
       response = GetnetApi::CardVerification.verify card
       expected_uri = 'https://api-sandbox.getnet.com.br/v1/cards/verification'
       expect(WebMock).to have_requested(:post, expected_uri)
