@@ -18,9 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
     - uses: actions/setup-ruby@v1
       with:
         ruby-version: '2.6' 
+
     - uses: actions/cache@v2
       name: Fetching cache for bundle
       with:
@@ -28,18 +30,23 @@ jobs:
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gems-
+
     - name: Install dependencies
       run: |
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
+
+    - uses: amancevice/setup-code-climate@v0
+      name: CodeClimate Install
+      with:
+        cc_test_reporter_id: ${{ secrets.CC_TEST_REPORTER_ID }}
+
     - name: Prepare Code Climate Reporter
       env:
         GIT_BRANCH: $GITHUB_REF
         GIT_COMMIT_SHA: $GITHUB_SHA
-      run: |
-        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-        chmod +x ./cc-test-reporter
-        ./cc-test-reporter before-build
+      run: cc-test-reporter before-build
+
     - name: Run tests
       run: bundle exec rspec
       
@@ -51,8 +58,6 @@ jobs:
         echo "::`echo -n ${{ github.token }} | sha256sum | head -c 64`::"
       if: github.event_name == 'push'
 
-    - name: Report coverage
-      run: ./cc-test-reporter after-build -t simplecov --prefix "./" --exit-code $?
-      env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+    - name: CodeClimate Post-build Notification
+      run: cc-test-reporter after-build
       
