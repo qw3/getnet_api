@@ -180,8 +180,12 @@ cancelamento = GetnetApi::PaymentCancel.create obj_cancelamento
 
 - [QW3 Software & Marketing](http://qw3.com.br)
 - [Leandro dos Santos Falcão](https://www.linkedin.com/in/lsfalcao)
+
+## Contributors
+
 - [Victor Barreiros](www.linkedin.com/in/victor-barreiros)
 - [Daniel B. Brumazzi](https://www.linkedin.com/in/daniel-brumazzi-2153707b/)
+- [eduardosleite](https://github.com/eduardosleite)
 
 ## Copyright
 
