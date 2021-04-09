@@ -86,7 +86,7 @@ DEPENDENCIES
   getnet_api!
   pry (~> 0.13.1)
   rspec
-  simplecov
+  simplecov (~> 0.17)
   vcr
   webmock
 
