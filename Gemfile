@@ -9,5 +9,5 @@ group :test do
   gem 'rspec'
   gem 'vcr'
   gem 'webmock'
-  gem 'simplecov', '~> 0.17' , require: false
+  gem 'simplecov', require: false
 end
