@@ -52,7 +52,7 @@ jobs:
       if: github.event_name == 'push'
 
     - name: Report coverage
-      run: ./cc-test-reporter after-build -t simplecov --exit-code $?
+      run: ./cc-test-reporter after-build -t simplecov --prefix ./ --exit-code $?
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       
