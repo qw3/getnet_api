@@ -39,22 +39,22 @@ http_interactions:
       X-Edgeconnect-Midmile-Rtt:
       - '7'
       X-Edgeconnect-Origin-Mex-Latency:
-      - '65'
+      - '21'
       X-Powered-By:
-      - '53247'
+      - '59483'
       Vary:
       - Accept-Encoding
       Date:
-      - Fri, 09 Apr 2021 16:21:58 GMT
+      - Fri, 09 Apr 2021 16:55:50 GMT
       Content-Length:
       - '127'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: "{\r\n  \"access_token\":\"8fff0aa2-c06e-4ed9-896d-77e2beb94e25\",\r\n
+      string: "{\r\n  \"access_token\":\"6b1620ea-ab25-4902-87ee-0f0fc2521ff3\",\r\n
         \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":3600,\r\n  \"scope\":\"oob\"\r\n}"
-  recorded_at: Fri, 09 Apr 2021 16:21:58 GMT
+  recorded_at: Fri, 09 Apr 2021 16:55:50 GMT
 - request:
     method: post
     uri: https://api-sandbox.getnet.com.br/v1/tokens/card
@@ -71,7 +71,7 @@ http_interactions:
       Host:
       - api-sandbox.getnet.com.br
       Authorization:
-      - Bearer 8fff0aa2-c06e-4ed9-896d-77e2beb94e25
+      - Bearer 6b1620ea-ab25-4902-87ee-0f0fc2521ff3
       Content-Type:
       - application/json
       Seller-Id:
@@ -92,27 +92,27 @@ http_interactions:
       Content-Type:
       - application/json;charset=utf-8
       Content-Length:
-      - '129'
+      - '130'
       X-Edgeconnect-Midmile-Rtt:
-      - '8'
+      - '12'
       X-Edgeconnect-Origin-Mex-Latency:
-      - '92'
+      - '52'
       X-Powered-By:
-      - '53248'
+      - '59485'
       Date:
-      - Fri, 09 Apr 2021 16:21:58 GMT
+      - Fri, 09 Apr 2021 16:55:50 GMT
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"number_token":"7b56b5c1d7d7816926b72649a80cd9f710dabf29dd145dd82610e1d7d3b694badbfe7b6fea0ad7214f296259324d4eb898e80dbbd5671fd8d4c0e1a2bd390893"}'
-  recorded_at: Fri, 09 Apr 2021 16:21:58 GMT
+      string: '{"number_token":"0938d3e8432e0552dde497cf2c474bca144846dec854c5d197aa76e126ed4863e2a1c0357b2e40aabc5c9902ffca823a0d38a86f7d000fca3b0852a648bea6a8"}'
+  recorded_at: Fri, 09 Apr 2021 16:55:50 GMT
 - request:
     method: post
     uri: https://api-sandbox.getnet.com.br/v1/cards/verification
     body:
       encoding: UTF-8
-      string: '{"number_token":"7b56b5c1d7d7816926b72649a80cd9f710dabf29dd145dd82610e1d7d3b694badbfe7b6fea0ad7214f296259324d4eb898e80dbbd5671fd8d4c0e1a2bd390893","cardholder_name":"JOAO
+      string: '{"number_token":"0938d3e8432e0552dde497cf2c474bca144846dec854c5d197aa76e126ed4863e2a1c0357b2e40aabc5c9902ffca823a0d38a86f7d000fca3b0852a648bea6a8","cardholder_name":"JOAO
         DA SILVA","expiration_month":"12","expiration_year":"20","security_code":"123"}'
     headers:
       Accept-Encoding:
@@ -124,7 +124,7 @@ http_interactions:
       Host:
       - api-sandbox.getnet.com.br
       Authorization:
-      - Bearer 8fff0aa2-c06e-4ed9-896d-77e2beb94e25
+      - Bearer 6b1620ea-ab25-4902-87ee-0f0fc2521ff3
       Content-Type:
       - application/json
       Seller-Id:
@@ -147,19 +147,19 @@ http_interactions:
       X-Edgeconnect-Midmile-Rtt:
       - '7'
       X-Edgeconnect-Origin-Mex-Latency:
-      - '411'
+      - '996'
       X-Powered-By:
-      - '53255'
+      - '59486'
       Vary:
       - Accept-Encoding
       Date:
-      - Fri, 09 Apr 2021 16:21:59 GMT
+      - Fri, 09 Apr 2021 16:55:51 GMT
       Content-Length:
       - '120'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"status":"VERIFIED","verification_id":"f8f1c59d-b703-4f77-a000-92fc188df53f","authorization_code":"350654079740422100"}'
-  recorded_at: Fri, 09 Apr 2021 16:21:59 GMT
+      string: '{"status":"VERIFIED","verification_id":"25e10cec-9e5b-4d72-8e7a-974823b62cdb","authorization_code":"551533810538421570"}'
+  recorded_at: Fri, 09 Apr 2021 16:55:51 GMT
 recorded_with: VCR 6.0.0
