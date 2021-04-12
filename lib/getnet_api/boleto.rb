@@ -29,7 +29,6 @@ module GetnetApi
 
     # validates :valor_total, length: { maximum:  }
     # validates :expiration_date, length: { maximum:  }
-    validates :moeda, length: { maximum: 3 }
     validates :our_number , length: { maximum: 12 }
     validates :document_number, length: { maximum: 15 }
     validates :instructions, length: { maximum: 1000 }
