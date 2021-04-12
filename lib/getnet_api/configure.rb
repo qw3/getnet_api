@@ -98,7 +98,7 @@ module GetnetApi
     end
 
     def base_uri
-      return "#{self.endpoint}/#{self.api_version}/"
+      return "#{self.endpoint}/#{self.api_version}"
     end
 
   end

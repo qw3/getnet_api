@@ -7,4 +7,6 @@ gem 'activemodel'
 group :test do
   gem 'pry', '~> 0.13.1'
   gem 'rspec'
+  gem 'vcr'
+  gem 'webmock'
 end
