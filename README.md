@@ -111,7 +111,6 @@ obj_pagamento = GetnetApi::Payment.new ({
   amount:           100,        # Quantidade em centavos
   order:            obj_pedido, # Objeto da classe GetnetApi::Order
   customer:         obj_cliente, # Objeto da classe GetnetApi::Customer
-  billing_address:  obj_endereco, # Objeto da classe GetnetApi::Address
 })
 ```
 ## Criando um pagamento na GetNet do tipo Credit
