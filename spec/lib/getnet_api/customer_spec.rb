@@ -121,7 +121,7 @@ describe GetnetApi::Customer do
   end
 
   describe '.create', :vcr do
-    it 'performs the request and returns the number_token' do
+    it 'performs the request' do
       GetnetApi::Customer.create customer
       expected_uri = 'https://api-sandbox.getnet.com.br/v1/customers'
       expect(WebMock).to have_requested(:post, expected_uri)
