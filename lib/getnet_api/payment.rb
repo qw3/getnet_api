@@ -23,7 +23,6 @@ module GetnetApi
     # Validações do Rails 3
     include ActiveModel::Validations
 
-    validates :amount, length: { maximum: 3 }
     validates :currency, length: { maximum: 3 }
 
     validates_each [:order] do |record, attr, value|
@@ -33,16 +32,6 @@ module GetnetApi
         end
       else
         record.errors.add(attr, 'deve ser um objeto GetnetApi::Order.')
-      end
-    end
-
-    validates_each [:boleto] do |record, attr, value|
-      if value.is_a? GetnetApi::Boleto
-        if value.invalid?
-          value.errors.full_messages.each { |msg| record.errors.add(attr, msg) }
-        end
-      else
-        record.errors.add(attr, 'deve ser um objeto GetnetApi::Boleto.')
       end
     end
 
@@ -82,9 +71,9 @@ module GetnetApi
       }
 
       if type == :boleto
-          payment.merge!({"boleto" => obj.to_request,})
-      elsif :credit
-          payment.merge!({"credit" => obj.to_request,})
+          payment.merge!({boleto: obj.to_request,})
+      elsif type == :credit
+          payment.merge!({credit: obj.to_request,})
       end
 
       return payment

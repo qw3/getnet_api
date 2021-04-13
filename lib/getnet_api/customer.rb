@@ -9,7 +9,7 @@ module GetnetApi
     }
 
     # Código que identifica o cliente no estabelecimento.
-    # Alfa Numérico - Até 20 caracteres
+    # Alfa Numérico - Até 100 caracteres
     attr_accessor :customer_id
 
     # Nome do comprador
@@ -106,10 +106,10 @@ module GetnetApi
       }
 
       if tipo == :customer
-          customer.merge!({"address" => address.to_request,})
+          customer.merge!({address: address.to_request})
       elsif tipo == :payment
-          customer.merge!({"name" => self.name.to_s,})
-          customer.merge!({"billing_address" => address.to_request,})
+          customer.merge!({name: self.name.to_s})
+          customer.merge!({billing_address: address.to_request})
       end
 
       return customer

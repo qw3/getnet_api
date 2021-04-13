@@ -1,0 +1,170 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/auth/oauth/v2/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=oob
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Basic NzQ0Mzg4NzctZjAwYi00NTAyLTg0NTQtZGUzZDcxNjZkYzJhOjRlYWM2OTIwLTFiNTctNGNkMS04Nzk5LWQ4NzcxNzNiZmEzNw==
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=UTF-8
+      X-Edgeconnect-Midmile-Rtt:
+      - '9'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '86'
+      X-Powered-By:
+      - '54376'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 13 Apr 2021 15:04:35 GMT
+      Content-Length:
+      - '127'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"access_token\":\"f9537a51-df51-4d86-a780-dff31fdc0381\",\r\n
+        \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":3600,\r\n  \"scope\":\"oob\"\r\n}"
+  recorded_at: Tue, 13 Apr 2021 15:04:35 GMT
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/v1/tokens/card
+    body:
+      encoding: UTF-8
+      string: '{"card_number":"5155901222280001"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Bearer f9537a51-df51-4d86-a780-dff31fdc0381
+      Content-Type:
+      - application/json
+      Seller-Id:
+      - 67be6e90-00c1-410d-83f5-6d75621effc8
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '130'
+      X-Edgeconnect-Midmile-Rtt:
+      - '8'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '46'
+      X-Powered-By:
+      - '54377'
+      Date:
+      - Tue, 13 Apr 2021 15:04:35 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"number_token":"fcb1c890960861576365fb40f4806d437f5c3f308d74dc059ba91c34d0f56055c0e93a5672b014f87a10a58dbac49a912cbeaa1ad352e805455fa029c6dadfe0"}'
+  recorded_at: Tue, 13 Apr 2021 15:04:35 GMT
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/v1/payments/credit
+    body:
+      encoding: UTF-8
+      string: '{"seller_id":"67be6e90-00c1-410d-83f5-6d75621effc8","amount":10000,"currency":"BRL","order":{"order_id":"123","sales_tax":0,"product_type":"service"},"customer":{"customer_id":"123","first_name":"João","last_name":"da
+        Silva","email":"joao@email.com","document_type":"CPF","document_number":"12332112340","phone_number":"5551999887766","name":"João
+        da Silva","billing_address":{"street":"Nome da Rua","number":"123","complement":"Complemento","district":"Nome
+        do Bairro","city":"São Paulo","state":"SP","postal_code":"01010010","country":"Brasil"}},"credit":{"delayed":false,"authenticated":false,"pre_authorization":false,"save_card_data":false,"transaction_type":"FULL","number_installments":1,"soft_descriptor":"Descrição
+        para fatura","dynamic_mcc":1799,"card":{"number_token":"fcb1c890960861576365fb40f4806d437f5c3f308d74dc059ba91c34d0f56055c0e93a5672b014f87a10a58dbac49a912cbeaa1ad352e805455fa029c6dadfe0","cardholder_name":"JOAO
+        DA SILVA","security_code":"123","brand":"Mastercard","expiration_month":"12","expiration_year":"23"}}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Bearer f9537a51-df51-4d86-a780-dff31fdc0381
+      Content-Type:
+      - application/json
+      Seller-Id:
+      - 67be6e90-00c1-410d-83f5-6d75621effc8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=utf-8
+      X-Edgeconnect-Midmile-Rtt:
+      - '9'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '389'
+      X-Powered-By:
+      - '54378'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 13 Apr 2021 15:04:36 GMT
+      Content-Length:
+      - '547'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"payment_id":"f142cf8c-0d4d-4a99-9ad8-61e0fbc14f2f","seller_id":"67be6e90-00c1-410d-83f5-6d75621effc8","amount":10000,"currency":"BRL","order_id":"123","status":"APPROVED","received_at":"2021-04-13T15:04:36.127Z","credit":{"delayed":false,"authorization_code":"870235730519","authorized_at":"2021-04-13T15:04:36.127Z","reason_code":"0","reason_message":"transaction
+        approved","acquirer":"GETNET","soft_descriptor":"EC*SANDBOX","terminal_nsu":"336082","brand":"Mastercard","acquirer_transaction_id":"76006889","transaction_id":"6199185648205514"}}'
+  recorded_at: Tue, 13 Apr 2021 15:04:36 GMT
+recorded_with: VCR 6.0.0
