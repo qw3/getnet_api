@@ -72,7 +72,7 @@ module GetnetApi
 
       if type == :boleto
           payment.merge!({boleto: obj.to_request,})
-      elsif :credit
+      elsif type == :credit
           payment.merge!({credit: obj.to_request,})
       end
 
