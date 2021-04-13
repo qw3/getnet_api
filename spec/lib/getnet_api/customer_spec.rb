@@ -110,12 +110,12 @@ describe GetnetApi::Customer do
     it 'returns customer object as a hash' do
       customer_hash = customer.to_request(:payment)
       hash_keys = customer_hash.keys.reject do |key|
-        ['billing_address', :document_type].include?(key)
+        %i[billing_address document_type].include?(key)
       end
       hash_keys.each do |key|
         expect(customer_hash[key]).to eq customer.send(key)
       end
-      expect(customer_hash['billing_address']).to eq customer.address.to_request
+      expect(customer_hash[:billing_address]).to eq customer.address.to_request
       expect(customer_hash[:document_type]).to eq 'CPF'
     end
   end
