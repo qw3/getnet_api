@@ -128,7 +128,7 @@ module GetnetApi
     private
 
     def self.endpoint
-      return "/customers"
+      return "customers"
     end
 
   end
