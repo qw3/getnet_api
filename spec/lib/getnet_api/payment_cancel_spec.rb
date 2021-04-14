@@ -92,7 +92,6 @@ describe GetnetApi::Payment do
     expect(payment_cancel).to be_valid
   end
 
-
   context '#to_request' do
     it 'returns card object as a hash' do
       payment_cancel_hash = payment_cancel.to_request
@@ -111,11 +110,11 @@ describe GetnetApi::Payment do
            payment_id: payment_id,
            cancel_amount: 100
         )
-        VCR.use_cassette('getnet_api/payment_cancel/create') do
-           response_cancelamento = GetnetApi::PaymentCancel.create payment_cancel
-        end   
+        response_cancelamento = GetnetApi::PaymentCancel.create payment_cancel
+
         expected_uri = "https://api-sandbox.getnet.com.br/v1/payments/credit/#{payment_id}/cancel"
         expect(WebMock).to have_requested(:post, expected_uri)
+        expect(response_cancelamento["status"]).to eq("CANCELED")
       end
     end  
   end
