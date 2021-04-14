@@ -11,6 +11,15 @@ describe GetnetApi::Configure do
       end
     end
 
+    after do
+      GetnetApi.configure do |config|
+        config.ambiente = :sandbox
+        config.seller_id = '67be6e90-00c1-410d-83f5-6d75621effc8'
+        config.client_id = '74438877-f00b-4502-8454-de3d7166dc2a'
+        config.client_secret = '4eac6920-1b57-4cd1-8799-d877173bfa37'
+      end
+    end
+
     it 'sets attributes to GetnetApi' do
       expect(GetnetApi.seller_id).to eq 'seller_id'
       expect(GetnetApi.client_id).to eq 'client_id'
