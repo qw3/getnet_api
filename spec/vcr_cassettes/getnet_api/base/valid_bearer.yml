@@ -39,20 +39,20 @@ http_interactions:
       X-Edgeconnect-Midmile-Rtt:
       - '8'
       X-Edgeconnect-Origin-Mex-Latency:
-      - '29'
+      - '16'
       X-Powered-By:
-      - '63123'
+      - '62209'
       Vary:
       - Accept-Encoding
       Date:
-      - Tue, 06 Apr 2021 16:45:43 GMT
+      - Wed, 14 Apr 2021 14:08:33 GMT
       Content-Length:
       - '127'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: "{\r\n  \"access_token\":\"3e28e48b-478f-4b98-b2ca-c2e82e4d5d14\",\r\n
+      string: "{\r\n  \"access_token\":\"334de8fe-b9f4-49d3-87db-8188b69504ef\",\r\n
         \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":3600,\r\n  \"scope\":\"oob\"\r\n}"
-  recorded_at: Tue, 06 Apr 2021 16:45:43 GMT
+  recorded_at: Wed, 14 Apr 2021 14:08:33 GMT
 recorded_with: VCR 6.0.0
