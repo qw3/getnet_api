@@ -1,5 +1,5 @@
 # Gem Getnet API - Meios de Pagamento
-[![GetnetApi Master Actions Status](https://github.com/minestore/getnet_api/workflows/Ruby/badge.svg)](https://github.com/keviinlouis/financial-backend/actions)
+[![GetnetApi Master Actions Status](https://github.com/minestore/getnet_api/workflows/Ruby/badge.svg)](https://github.com/minestore/getnet_api/actions)
 <a href="https://codeclimate.com/github/minestore/getnet_api/maintainability"><img src="https://api.codeclimate.com/v1/badges/779e36dcfce7e558f24b/maintainability" /></a>
 
 ## Versão Beta
