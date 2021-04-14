@@ -37,24 +37,24 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       X-Edgeconnect-Midmile-Rtt:
-      - '9'
+      - '8'
       X-Edgeconnect-Origin-Mex-Latency:
-      - '74'
+      - '43'
       X-Powered-By:
-      - '56403'
+      - '62207'
       Vary:
       - Accept-Encoding
       Date:
-      - Fri, 09 Apr 2021 14:47:29 GMT
+      - Wed, 14 Apr 2021 14:08:33 GMT
       Content-Length:
       - '127'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: "{\r\n  \"access_token\":\"917f82f0-a0ee-4668-90f7-f70025eb2ca2\",\r\n
+      string: "{\r\n  \"access_token\":\"43bfa02b-8577-485e-83ca-b2f6383afb01\",\r\n
         \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":3600,\r\n  \"scope\":\"oob\"\r\n}"
-  recorded_at: Fri, 09 Apr 2021 14:47:29 GMT
+  recorded_at: Wed, 14 Apr 2021 14:08:33 GMT
 - request:
     method: get
     uri: https://api-sandbox.getnet.com.br/v1/some_endpoint
@@ -71,7 +71,7 @@ http_interactions:
       Host:
       - api-sandbox.getnet.com.br
       Authorization:
-      - Bearer 917f82f0-a0ee-4668-90f7-f70025eb2ca2
+      - Bearer 43bfa02b-8577-485e-83ca-b2f6383afb01
       Content-Type:
       - application/json
       Seller-Id:
@@ -92,15 +92,15 @@ http_interactions:
       Content-Type:
       - application/json;charset=utf-8
       X-Edgeconnect-Midmile-Rtt:
-      - '9'
+      - '6'
       X-Edgeconnect-Origin-Mex-Latency:
-      - '84'
+      - '50'
       X-Powered-By:
-      - '56404'
+      - '62208'
       Vary:
       - Accept-Encoding
       Date:
-      - Fri, 09 Apr 2021 14:47:29 GMT
+      - Wed, 14 Apr 2021 14:08:33 GMT
       Content-Length:
       - '196'
       Connection:
@@ -109,5 +109,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"message":"Not Found","name":"GatewayClientError","status_code":404,"details":[{"status":"DENIED","error_code":"GENERIC-404","description":"Not
         Found","description_detail":"Resource not found"}]}'
-  recorded_at: Fri, 09 Apr 2021 14:47:29 GMT
+  recorded_at: Wed, 14 Apr 2021 14:08:33 GMT
 recorded_with: VCR 6.0.0
