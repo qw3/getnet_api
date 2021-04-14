@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/v1/payments/credit//cancel
+    body:
+      encoding: UTF-8
+      string: '{"payment_id":null,"cancel_amount":100}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Bearer 3e28e48b-478f-4b98-b2ca-c2e82e4d5d14
+      Content-Type:
+      - application/json
+      Seller-Id:
+      - seller_id
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '342'
+      X-Edgeconnect-Midmile-Rtt:
+      - '15'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '13'
+      X-Powered-By:
+      - '23307'
+      Date:
+      - Wed, 14 Apr 2021 12:27:16 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "message": "Unauthorized",
+            "name": "GatewayAuthenticationOAuth2ServiceError",
+            "status_code": 401,
+            "details": [
+                {
+                    "status": "DENIED",
+                    "error_code": "AUTHENTICATION-401",
+                    "description": "Unauthorized",
+                    "description_detail": "Invalid client credentials"
+                }
+            ]
+        }
+  recorded_at: Wed, 14 Apr 2021 12:27:16 GMT
+recorded_with: VCR 6.0.0
