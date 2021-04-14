@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    getnet_api (1.0.3)
+    getnet_api (1.0.4)
       rest-client (>= 1.7.3)
 
 GEM
