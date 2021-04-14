@@ -1,0 +1,118 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/v1/payments/credit
+    body:
+      encoding: UTF-8
+      string: '{"seller_id":"67be6e90-00c1-410d-83f5-6d75621effc8","amount":100,"currency":"BRL","order":{"order_id":"123","sales_tax":0,"product_type":"service"},"customer":{"customer_id":"123","first_name":"João","last_name":"da
+        Silva","email":"joao@email.com","document_type":"CPF","document_number":"12332112340","phone_number":"5551999887766","name":"João
+        da Silva","billing_address":{"street":"Nome da Rua","number":"123","complement":"Complemento","district":"Nome
+        do Bairro","city":"São Paulo","state":"SP","postal_code":"01010010","country":"Brasil"}},"credit":{"delayed":false,"authenticated":false,"pre_authorization":false,"save_card_data":false,"transaction_type":"FULL","number_installments":1,"soft_descriptor":"Descrição
+        para fatura","dynamic_mcc":1799,"card":{"number_token":"6340d06dbac68528648f961d2a8dddc95659cacf87eeee451777ba471860b3ee37f316b39191bd40665352406ce476142edb425b9afa600b1b70109f0df68859","cardholder_name":"JOAO
+        DA SILVA","security_code":"123","brand":"Mastercard","expiration_month":"12","expiration_year":"23"}}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Bearer cb65c188-3266-462d-9445-7e5e22f921bb
+      Content-Type:
+      - application/json
+      Seller-Id:
+      - 67be6e90-00c1-410d-83f5-6d75621effc8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=utf-8
+      X-Edgeconnect-Midmile-Rtt:
+      - '18'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '469'
+      X-Powered-By:
+      - '23324'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Wed, 14 Apr 2021 14:17:02 GMT
+      Content-Length:
+      - '545'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"payment_id":"7961fb34-dc3a-4c43-b1f5-4016bbc3baf2","seller_id":"67be6e90-00c1-410d-83f5-6d75621effc8","amount":100,"currency":"BRL","order_id":"123","status":"APPROVED","received_at":"2021-04-14T14:17:02.495Z","credit":{"delayed":false,"authorization_code":"736551874784","authorized_at":"2021-04-14T14:17:02.495Z","reason_code":"0","reason_message":"transaction
+        approved","acquirer":"GETNET","soft_descriptor":"EC*SANDBOX","terminal_nsu":"466063","brand":"Mastercard","acquirer_transaction_id":"16084272","transaction_id":"8311439918432371"}}'
+  recorded_at: Wed, 14 Apr 2021 14:17:02 GMT
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/v1/payments/credit/7961fb34-dc3a-4c43-b1f5-4016bbc3baf2/cancel
+    body:
+      encoding: UTF-8
+      string: '{"payment_id":"7961fb34-dc3a-4c43-b1f5-4016bbc3baf2","cancel_amount":100}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Bearer cb65c188-3266-462d-9445-7e5e22f921bb
+      Content-Type:
+      - application/json
+      Seller-Id:
+      - 67be6e90-00c1-410d-83f5-6d75621effc8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=utf-8
+      X-Edgeconnect-Midmile-Rtt:
+      - '15'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '584'
+      X-Powered-By:
+      - '23325'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Wed, 14 Apr 2021 14:17:03 GMT
+      Content-Length:
+      - '283'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"payment_id":"7961fb34-dc3a-4c43-b1f5-4016bbc3baf2","seller_id":"67be6e90-00c1-410d-83f5-6d75621effc8","amount":100,"currency":"BRL","order_id":"123","status":"CANCELED","credit_cancel":{"canceled_at":"2021-04-14T14:17:02.979Z","message":"Credit
+        transaction cancelled sucessfully"}}'
+  recorded_at: Wed, 14 Apr 2021 14:17:03 GMT
+recorded_with: VCR 6.0.0
