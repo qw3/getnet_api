@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/v1/customers
+    body:
+      encoding: UTF-8
+      string: '{"customer_id":"123","first_name":"João","last_name":"da Silva","email":"joao@email.com","document_type":"CPF","document_number":"12332112340","phone_number":"5551999887766","address":{"street":"Nome
+        da Rua","number":"123","complement":"Complemento","district":"Nome do Bairro","city":"São
+        Paulo","state":"SP","postal_code":"01010010","country":"Brasil"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Bearer 3e28e48b-478f-4b98-b2ca-c2e82e4d5d14
+      Content-Type:
+      - application/json
+      Seller-Id:
+      - seller_id
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '342'
+      X-Edgeconnect-Midmile-Rtt:
+      - '11'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '48'
+      X-Powered-By:
+      - '58105'
+      Date:
+      - Tue, 13 Apr 2021 19:23:49 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "message": "Unauthorized",
+            "name": "GatewayAuthenticationOAuth2ServiceError",
+            "status_code": 401,
+            "details": [
+                {
+                    "status": "DENIED",
+                    "error_code": "AUTHENTICATION-401",
+                    "description": "Unauthorized",
+                    "description_detail": "Invalid client credentials"
+                }
+            ]
+        }
+  recorded_at: Tue, 13 Apr 2021 19:23:49 GMT
+recorded_with: VCR 6.0.0

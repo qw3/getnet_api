@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/v1/payments/credit
+    body:
+      encoding: UTF-8
+      string: '{"seller_id":"67be6e90-00c1-410d-83f5-6d75621effc8","amount":10000,"currency":"BRL","order":{"order_id":"123","sales_tax":0,"product_type":"service"},"customer":{"customer_id":"123","first_name":"João","last_name":"da
+        Silva","email":"joao@email.com","document_type":"CPF","document_number":"12332112340","phone_number":"5551999887766","name":"João
+        da Silva","billing_address":{"street":"Nome da Rua","number":"123","complement":"Complemento","district":"Nome
+        do Bairro","city":"São Paulo","state":"SP","postal_code":"01010010","country":"Brasil"}},"credit":{"delayed":false,"authenticated":false,"pre_authorization":false,"save_card_data":false,"transaction_type":"FULL","number_installments":1,"soft_descriptor":"Descrição
+        para fatura","dynamic_mcc":1799,"card":{"number_token":"0afcea9339a585558c6b7d9beaeca015bade50a03112c94372885dc930f75f39ca310e8215f5e2fec4f90eaf834c28ddb5acc5a6f8d3fc1d59e2a421f4b9c5cf","cardholder_name":"JOAO
+        DA SILVA","security_code":"123","brand":"Mastercard","expiration_month":"12","expiration_year":"23"}}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Bearer 334de8fe-b9f4-49d3-87db-8188b69504ef
+      Content-Type:
+      - application/json
+      Seller-Id:
+      - 67be6e90-00c1-410d-83f5-6d75621effc8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=utf-8
+      X-Edgeconnect-Midmile-Rtt:
+      - '6'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '386'
+      X-Powered-By:
+      - '62215'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Wed, 14 Apr 2021 14:08:35 GMT
+      Content-Length:
+      - '547'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"payment_id":"7f110fde-4f49-45ef-b4fb-ff9778c76d15","seller_id":"67be6e90-00c1-410d-83f5-6d75621effc8","amount":10000,"currency":"BRL","order_id":"123","status":"APPROVED","received_at":"2021-04-14T14:08:35.096Z","credit":{"delayed":false,"authorization_code":"745645643933","authorized_at":"2021-04-14T14:08:35.096Z","reason_code":"0","reason_message":"transaction
+        approved","acquirer":"GETNET","soft_descriptor":"EC*SANDBOX","terminal_nsu":"125723","brand":"Mastercard","acquirer_transaction_id":"43310188","transaction_id":"3746025620583979"}}'
+  recorded_at: Wed, 14 Apr 2021 14:08:35 GMT
+recorded_with: VCR 6.0.0

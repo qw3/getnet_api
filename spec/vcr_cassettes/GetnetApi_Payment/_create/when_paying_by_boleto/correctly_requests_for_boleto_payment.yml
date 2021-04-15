@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/v1/payments/boleto
+    body:
+      encoding: UTF-8
+      string: '{"seller_id":"67be6e90-00c1-410d-83f5-6d75621effc8","amount":10000,"currency":"BRL","order":{"order_id":"123","sales_tax":0,"product_type":"service"},"customer":{"customer_id":"123","first_name":"João","last_name":"da
+        Silva","email":"joao@email.com","document_type":"CPF","document_number":"12332112340","phone_number":"5551999887766","name":"João
+        da Silva","billing_address":{"street":"Nome da Rua","number":"123","complement":"Complemento","district":"Nome
+        do Bairro","city":"São Paulo","state":"SP","postal_code":"01010010","country":"Brasil"}},"boleto":{"our_number":"123321123","document_number":"12345678","expiration_date":null,"instructions":"Não
+        receber após o vencimento","provider":"santander"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Bearer 334de8fe-b9f4-49d3-87db-8188b69504ef
+      Content-Type:
+      - application/json
+      Seller-Id:
+      - 67be6e90-00c1-410d-83f5-6d75621effc8
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '405'
+      X-Edgeconnect-Midmile-Rtt:
+      - '8'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '35'
+      X-Powered-By:
+      - '62214'
+      Date:
+      - Wed, 14 Apr 2021 14:08:34 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"payment_id":"nrxi4nuwv8bvhf6l28m2ae5y","seller_id":"67be6e90-00c1-410d-83f5-6d75621effc8","amount":10000,"currency":"BRL","order_id":"123","status":"PENDING","boleto":{"boleto_id":"35efbe68-0df6-4989-bcee-fb4d6b7d4f52","bank":"033","status_code":"1","status_label":"EM
+        ABERTO","typeful_line":"01010.01010 01010.010101 01010.010101 1 01010101010101","bar_code":"03393775500000002009589193012345678901230101","issue_date":"14/04/2021","expiration_date":"21/04/2021","our_number":"000123321123","document_number":"000000012345678","_links":[{"href":"/v1/payments/boleto/nrxi4nuwv8bvhf6l28m2ae5y/pdf","rel":"boleto_pdf","type":"GET"},{"href":"/v1/payments/boleto/nrxi4nuwv8bvhf6l28m2ae5y/html","rel":"boleto_html","type":"GET"}]}}'
+  recorded_at: Wed, 14 Apr 2021 14:08:34 GMT
+recorded_with: VCR 6.0.0

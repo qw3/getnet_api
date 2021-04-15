@@ -1,4 +1,6 @@
 # Gem Getnet API - Meios de Pagamento
+[![GetnetApi Master Actions Status](https://github.com/minestore/getnet_api/workflows/Ruby/badge.svg)](https://github.com/minestore/getnet_api/actions)
+<a href="https://codeclimate.com/github/minestore/getnet_api/maintainability"><img src="https://api.codeclimate.com/v1/badges/779e36dcfce7e558f24b/maintainability" /></a>
 
 ## Versão Beta
 
@@ -39,7 +41,7 @@ GetnetApi.configure do |config|
   #
   # Código que identifica o seller_id dentro da Getnet
   # Enviado pela Getnet
-  config.seller_id = '5c89ec4a-db89-45a6-8c96-5b0b72907ef5'
+  config.seller_id = '5c89ec4a-db89-45a6-8c96-5b0b72907ef5' 
 
   #
   # Código que identifica o client_id dentro da Getnet
@@ -109,7 +111,6 @@ obj_pagamento = GetnetApi::Payment.new ({
   amount:           100,        # Quantidade em centavos
   order:            obj_pedido, # Objeto da classe GetnetApi::Order
   customer:         obj_cliente, # Objeto da classe GetnetApi::Customer
-  billing_address:  obj_endereco, # Objeto da classe GetnetApi::Address
 })
 ```
 ## Criando um pagamento na GetNet do tipo Credit

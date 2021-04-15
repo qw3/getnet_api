@@ -1,0 +1,110 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/v1/tokens/card
+    body:
+      encoding: UTF-8
+      string: '{"card_number":"5155901222280001"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Bearer 334de8fe-b9f4-49d3-87db-8188b69504ef
+      Content-Type:
+      - application/json
+      Seller-Id:
+      - 67be6e90-00c1-410d-83f5-6d75621effc8
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '130'
+      X-Edgeconnect-Midmile-Rtt:
+      - '8'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '84'
+      X-Powered-By:
+      - '62211'
+      Date:
+      - Wed, 14 Apr 2021 14:08:33 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"number_token":"20fab04ff355fd0ec046137cc81a75f6f49ed1aa6b1700e40421824bf732447f105fa1740774782bad3c19c1a461f6c4f363ed95738e882635e19dad452c29d5"}'
+  recorded_at: Wed, 14 Apr 2021 14:08:33 GMT
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/v1/cards/verification
+    body:
+      encoding: UTF-8
+      string: '{"number_token":"20fab04ff355fd0ec046137cc81a75f6f49ed1aa6b1700e40421824bf732447f105fa1740774782bad3c19c1a461f6c4f363ed95738e882635e19dad452c29d5","cardholder_name":"JOAO
+        DA SILVA","expiration_month":"12","expiration_year":"20","security_code":"123"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Bearer 334de8fe-b9f4-49d3-87db-8188b69504ef
+      Content-Type:
+      - application/json
+      Seller-Id:
+      - 67be6e90-00c1-410d-83f5-6d75621effc8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=utf-8
+      X-Edgeconnect-Midmile-Rtt:
+      - '6'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '826'
+      X-Powered-By:
+      - '62212'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Wed, 14 Apr 2021 14:08:34 GMT
+      Content-Length:
+      - '120'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"status":"VERIFIED","verification_id":"52eed537-e894-4b1e-a037-98601aa4b942","authorization_code":"205833985653860670"}'
+  recorded_at: Wed, 14 Apr 2021 14:08:34 GMT
+recorded_with: VCR 6.0.0
