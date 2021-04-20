@@ -5,13 +5,13 @@ module GetnetApi
     require 'net/http'
 
     # Metodo para gerar o token do cartão de credito do cliente, para ser usado no pagamento.
-    def self.get card_number
+    def self.get card_number, auth = nil
 
       hash =  {
               "card_number" => card_number.to_s
               }
 
-      response = self.build_request self.endpoint, "post", hash
+      response = self.build_request self.endpoint, "post", hash, auth
 
       return JSON.parse(response.read_body)
     end

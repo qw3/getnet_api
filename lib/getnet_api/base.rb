@@ -3,7 +3,7 @@ module GetnetApi
     require 'uri'
     require 'net/http'
 
-    def self.build_request endpoint, metodo, body=nil
+    def self.build_request endpoint, metodo, body=nil, auth = nil
 
       url = URI("#{GetnetApi.base_uri}/#{endpoint}")
 
@@ -20,38 +20,46 @@ module GetnetApi
       when "post"
         request = Net::HTTP::Post.new(url)
       end
-      request = GetnetApi::Base.default_headers request
+      request = GetnetApi::Base.default_headers request, auth
 
       request.body = body.to_json
       return http.request(request)
     end
-
-    def self.default_headers request
-      request["authorization"] = "Bearer #{GetnetApi::Base.valid_bearer}"
+    def self.default_headers request, auth = nil
+      request["authorization"] = "Bearer #{GetnetApi::Base.valid_bearer(auth)}"
       request["Content-Type"] = "application/json"
-      request["seller_id"] = "#{GetnetApi.seller_id}"
+      seller_id = auth&.seller_id || GetnetApi.seller_id
+      request["seller_id"] = "#{seller_id}"
       return request
     end
 
-    def self.get_token_de_bearer
+    def self.get_token_de_bearer(auth = nil)
+      result = generate_access_token(auth)
+      GetnetApi.access_token = result["access_token"]
+      GetnetApi.expires_in = DateTime.now + result["expires_in"].to_i.seconds - 60.seconds
+    end
+
+    def self.generate_access_token(auth = nil)
       url = URI("#{GetnetApi.endpoint}/auth/oauth/v2/token")
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
       request = Net::HTTP::Post.new(url)
-      request.basic_auth "#{GetnetApi.client_id}", "#{GetnetApi.client_secret}"
+      client_id = auth&.client_id || GetnetApi.client_id
+      client_secret = auth&.client_secret || GetnetApi.client_secret
+      request.basic_auth "#{client_id}", "#{client_secret}"
       request["Content-Type"] = "application/x-www-form-urlencoded"
       hash =  {
                 "scope" => 'oob',
                 "grant_type" => 'client_credentials',
               }
       request.body = hash.to_query
-      response =  http.request(request)
-      result = JSON.parse(response.read_body)
-      GetnetApi.access_token = result["access_token"]
-      GetnetApi.expires_in = DateTime.now + result["expires_in"].to_i.seconds - 60.seconds
+      response = http.request(request)
+      JSON.parse(response.read_body)
     end
 
-    def self.valid_bearer
+    def self.valid_bearer(auth = nil)
+      return generate_access_token(auth)['access_token'] if auth.present?
+
       if GetnetApi.expires_in > DateTime.now
         return GetnetApi.access_token
       else

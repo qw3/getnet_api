@@ -61,9 +61,9 @@ module GetnetApi
     end
 
     # Montar o Hash de dados do usuario no padrão utilizado pela Getnet
-    def to_request obj, type
+    def to_request obj, type, seller_id = nil
       payment = {
-        seller_id:        GetnetApi.seller_id.to_s,
+        seller_id:        seller_id || GetnetApi.seller_id.to_s,
         amount:           self.amount.to_i,
         currency:         self.currency.to_s,
         order:            self.order.to_request,
@@ -80,11 +80,11 @@ module GetnetApi
     end
 
     # a = GetnetApi::Payment.create pagamento, boleto, :boleto
-    def self.create(payment, obj, type)
+    def self.create(payment, obj, type, auth = nil)
 
-      hash = payment.to_request(obj, type)
+      hash = payment.to_request(obj, type, auth&.seller_id)
 
-      response = self.build_request self.endpoint(type), "post", hash
+      response = self.build_request self.endpoint(type), "post", hash, auth
 
       return JSON.parse(response.read_body)
     end
