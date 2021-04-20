@@ -11,10 +11,9 @@ describe GetnetApi::Payment do
   end
 
   let(:card_token) do
-    token = ''
     VCR.use_cassette('getnet_api/cardtoken/get') do
       card_number = '5155901222280001' # see https://developers.getnet.com.br/api#section/Cartoes-para-Teste
-      token = GetnetApi::CardToken.get(card_number)['number_token']
+      GetnetApi::CardToken.get(card_number)['number_token']
     end
   end
 
@@ -142,6 +141,21 @@ describe GetnetApi::Payment do
   end
 
   context '.create' do
+    let(:auth) do
+      GetnetApi::Auth.new(
+        '41ecaef6-cf9e-4efe-96c0-e29db363c9b8',
+        '007d27d7-3280-4529-b428-e568849da4b6',
+        'd989c95c-6bd0-4e1c-a030-82b0a906afb1'
+      )
+    end
+
+    context 'when using external authentication keys' do
+      it 'requests with correct seller id', :vcr do
+        response = GetnetApi::Payment.create payment, boleto, :boleto, auth
+        expect(response['seller_id']).to eq auth.seller_id
+      end
+    end
+
     context 'when paying by boleto', :vcr do
       it 'correctly requests for boleto payment' do
         response = GetnetApi::Payment.create payment, boleto, :boleto

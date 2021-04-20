@@ -1,0 +1,110 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/auth/oauth/v2/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=oob
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Basic MDA3ZDI3ZDctMzI4MC00NTI5LWI0MjgtZTU2ODg0OWRhNGI2OmQ5ODljOTVjLTZiZDAtNGUxYy1hMDMwLTgyYjBhOTA2YWZiMQ==
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=UTF-8
+      X-Edgeconnect-Midmile-Rtt:
+      - '7'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '67'
+      X-Powered-By:
+      - '50847'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 20 Apr 2021 20:43:57 GMT
+      Content-Length:
+      - '127'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"access_token\":\"1dac7e96-9b6a-4a5b-be9e-55d040b38b1d\",\r\n
+        \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":3600,\r\n  \"scope\":\"oob\"\r\n}"
+  recorded_at: Tue, 20 Apr 2021 20:43:57 GMT
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/v1/tokens/card
+    body:
+      encoding: UTF-8
+      string: '{"card_number":"5155901222280001"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Bearer 1dac7e96-9b6a-4a5b-be9e-55d040b38b1d
+      Content-Type:
+      - application/json
+      Seller-Id:
+      - 41ecaef6-cf9e-4efe-96c0-e29db363c9b8
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '131'
+      X-Edgeconnect-Midmile-Rtt:
+      - '7'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '46'
+      X-Powered-By:
+      - '50848'
+      Date:
+      - Tue, 20 Apr 2021 20:43:57 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"number_token":"06beef2041746658aba14d98c03f63941715a50fb026850158478aea74694f7cc391bbadfab3f7813e3dc3f1865f87139e3299e95ae4cd76ba1a6850e7ff65ee"}'
+  recorded_at: Tue, 20 Apr 2021 20:43:57 GMT
+recorded_with: VCR 6.0.0

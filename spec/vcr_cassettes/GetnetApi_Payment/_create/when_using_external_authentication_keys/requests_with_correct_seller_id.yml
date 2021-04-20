@@ -1,0 +1,115 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/auth/oauth/v2/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials&scope=oob
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Basic MDA3ZDI3ZDctMzI4MC00NTI5LWI0MjgtZTU2ODg0OWRhNGI2OmQ5ODljOTVjLTZiZDAtNGUxYy1hMDMwLTgyYjBhOTA2YWZiMQ==
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-store
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=UTF-8
+      X-Edgeconnect-Midmile-Rtt:
+      - '9'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '64'
+      X-Powered-By:
+      - '50717'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Tue, 20 Apr 2021 20:36:33 GMT
+      Content-Length:
+      - '127'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\r\n  \"access_token\":\"3e87ca0e-d937-4121-8177-470a4a27c9e7\",\r\n
+        \ \"token_type\":\"Bearer\",\r\n  \"expires_in\":3600,\r\n  \"scope\":\"oob\"\r\n}"
+  recorded_at: Tue, 20 Apr 2021 20:36:33 GMT
+- request:
+    method: post
+    uri: https://api-sandbox.getnet.com.br/v1/payments/boleto
+    body:
+      encoding: UTF-8
+      string: '{"seller_id":"41ecaef6-cf9e-4efe-96c0-e29db363c9b8","amount":10000,"currency":"BRL","order":{"order_id":"123","sales_tax":0,"product_type":"service"},"customer":{"customer_id":"123","first_name":"João","last_name":"da
+        Silva","email":"joao@email.com","document_type":"CPF","document_number":"12332112340","phone_number":"5551999887766","name":"João
+        da Silva","billing_address":{"street":"Nome da Rua","number":"123","complement":"Complemento","district":"Nome
+        do Bairro","city":"São Paulo","state":"SP","postal_code":"01010010","country":"Brasil"}},"boleto":{"our_number":"123321123","document_number":"12345678","expiration_date":null,"instructions":"Não
+        receber após o vencimento","provider":"santander"}}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api-sandbox.getnet.com.br
+      Authorization:
+      - Bearer 3e87ca0e-d937-4121-8177-470a4a27c9e7
+      Content-Type:
+      - application/json
+      Seller-Id:
+      - 41ecaef6-cf9e-4efe-96c0-e29db363c9b8
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Preload:
+      - ''
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '403'
+      X-Edgeconnect-Midmile-Rtt:
+      - '9'
+      X-Edgeconnect-Origin-Mex-Latency:
+      - '90'
+      X-Powered-By:
+      - '50718'
+      Date:
+      - Tue, 20 Apr 2021 20:36:33 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"payment_id":"v7p2erishbul77um60m0l66m","seller_id":"41ecaef6-cf9e-4efe-96c0-e29db363c9b8","amount":10000,"currency":"BRL","order_id":"123","status":"PENDING","boleto":{"boleto_id":"f57d5a1a-6474-4dda-832a-cce4e71385ea","bank":"033","status_code":"1","status_label":"EM
+        ABERTO","typeful_line":"01010.01010 01010.010101 01010.010101 1 01010101010101","bar_code":"03393775500000002009589193012345678901230101","issue_date":"20/04/2021","expiration_date":"27/04/2021","our_number":"000123321123","document_number":"000000012345678","_links":[{"href":"/v1/payments/boleto/v7p2erishbul77um60m0l66m/pdf","rel":"boleto_pdf","type":"GET"},{"href":"/v1/payments/boleto/v7p2erishbul77um60m0l66m/html","rel":"boleto_html","type":"GET"}]}}'
+  recorded_at: Tue, 20 Apr 2021 20:36:33 GMT
+recorded_with: VCR 6.0.0
