@@ -187,13 +187,13 @@ cancelamento = GetnetApi::PaymentCancel.create obj_cancelamento
 
 ## Copyright
 
-[QW3 Software & Marketing](http://qw3.com.br)
+[Falcão Tecnologias Digitais](http://qw3.com.br)
 
-![QW3 Logo](http://qw3.com.br/qw3_logo.png)
+![FalcãoTD Logo](https://falcaotd.com.br/assets/icons/logo-tarja.svg)
 
 MIT License
 
-Copyright (c) 2018 QW3 - Software, Marketing e Consultoria
+Copyright (c) 2025 FalcãoTD - Software, Marketing e Consultoria
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
