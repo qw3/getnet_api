@@ -1,10 +1,9 @@
 module GetnetApi
   class Base
-    require 'uri'
-    require 'net/http'
+    require "uri"
+    require "net/http"
 
-    def self.build_request endpoint, metodo, body=nil
-
+    def self.build_request endpoint, metodo, body = nil
       url = URI("#{GetnetApi.base_uri}/#{endpoint}")
 
       http = Net::HTTP.new(url.host, url.port)
@@ -23,14 +22,14 @@ module GetnetApi
       request = GetnetApi::Base.default_headers request
 
       request.body = body.to_json
-      return http.request(request)
+      http.request(request)
     end
 
     def self.default_headers request
       request["authorization"] = "Bearer #{GetnetApi::Base.valid_bearer}"
       request["Content-Type"] = "application/json"
-      request["seller_id"] = "#{GetnetApi.seller_id}"
-      return request
+      request["seller_id"] = GetnetApi.seller_id.to_s
+      request
     end
 
     def self.get_token_de_bearer
@@ -38,27 +37,24 @@ module GetnetApi
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
       request = Net::HTTP::Post.new(url)
-      request.basic_auth "#{GetnetApi.client_id}", "#{GetnetApi.client_secret}"
+      request.basic_auth GetnetApi.client_id.to_s, GetnetApi.client_secret.to_s
       request["Content-Type"] = "application/x-www-form-urlencoded"
-      hash =  {
-                "scope" => 'oob',
-                "grant_type" => 'client_credentials',
-              }
+      hash = {
+        "scope" => "oob",
+        "grant_type" => "client_credentials"
+      }
       request.body = hash.to_query
-      response =  http.request(request)
+      response = http.request(request)
       result = JSON.parse(response.read_body)
       GetnetApi.access_token = result["access_token"]
       GetnetApi.expires_in = DateTime.now + result["expires_in"].to_i.seconds - 60.seconds
     end
 
     def self.valid_bearer
-      if GetnetApi.expires_in > DateTime.now
-        return GetnetApi.access_token
-      else
+      unless GetnetApi.expires_in > DateTime.now
         GetnetApi::Base.get_token_de_bearer
-        return GetnetApi.access_token
       end
+      GetnetApi.access_token
     end
-
   end
 end

@@ -63,41 +63,46 @@ module GetnetApi
     # Montar o Hash de dados do usuario no padrão utilizado pela Getnet
     def to_request obj, type
       payment = {
-        seller_id:        GetnetApi.seller_id.to_s,
-        amount:           self.amount.to_i,
-        currency:         self.currency.to_s,
-        order:            self.order.to_request,
-        customer:         self.customer.to_request(:payment),
+        seller_id: GetnetApi.seller_id.to_s,
+        amount: amount.to_i,
+        currency: currency.to_s,
+        order: order.to_request,
+        customer: customer.to_request(:payment)
       }
 
-      if type == :boleto
-          payment.merge!({boleto: obj.to_request,})
-      elsif type == :credit
-          payment.merge!({credit: obj.to_request,})
+      if type == :boleto || type == :credit
+        payment[:order] = order.to_request
+        payment[:customer] = customer.to_request(:payment)
       end
 
-      return payment
+      if type == :boleto
+        payment[:boleto] = obj.to_request
+      elsif type == :credit
+        payment[:credit] = obj.to_request
+      elsif type == :pix
+        payment.merge!(obj.to_request)
+      end
+
+      payment
     end
 
     # a = GetnetApi::Payment.create pagamento, boleto, :boleto
     def self.create(payment, obj, type)
-
       hash = payment.to_request(obj, type)
 
-      response = self.build_request self.endpoint(type), "post", hash
+      response = build_request(endpoint(type), "post", hash)
 
-      return JSON.parse(response.read_body)
+      JSON.parse(response.read_body)
     end
-
-    private
 
     def self.endpoint type
       if type == :boleto
-        return "payments/boleto"
-      elsif :credit
-        return "payments/credit"
+        "payments/boleto"
+      elsif type == :credit
+        "payments/credit"
+      elsif type == :pix
+        "payments/qrcode/pix"
       end
     end
-
   end
 end
