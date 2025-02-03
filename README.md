@@ -158,6 +158,26 @@ obj_boleto = GetnetApi::Boleto.new ({
 novo_pagamento = GetnetApi::Payment.create obj_pagamento, obj_boleto, :boleto
 ```
 
+---
+
+## Criando um pagamento na GetNet do tipo Pix
+
+### Montar [Pix](https://www.rubydoc.info/gems/getnet_api/GetnetApi/Pix)
+https://developers.getnet.com.br/api#tag/PIX%2Fpaths%2F~1v1~1payments~1qrcode~1pix%2Fpost
+
+```ruby
+obj_pix = GetnetApi::Pix.new ({
+  order_id: "6598",
+  customer_id: "1234"
+})
+```
+
+```ruby
+# No Caso de pagamento de Pix
+# GetnetApi::Payment.create(GetnetApi::Payment, GetnetApi::Pix, tipo)
+novo_pagamento = GetnetApi::Payment.create obj_pagamento, obj_pix, :pix
+```
+
 ## Criando um cancelamento de cartão de crédito
 
 ### Montar [Cancelamento](https://www.rubydoc.info/gems/getnet_api/GetnetApi/PaymentCancel)
